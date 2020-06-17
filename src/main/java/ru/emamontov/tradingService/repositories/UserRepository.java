@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import ru.emamontov.tradingService.entities.User;
 
 @Repository
-public interface UserReposiory extends CrudRepository<User, Long> {
+public interface UserRepository extends CrudRepository<User, Long> {
 }
