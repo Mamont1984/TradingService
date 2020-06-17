@@ -11,7 +11,7 @@ public class User implements Serializable {
     @GeneratedValue
     private long id;
     private String name;
-    @OneToMany(mappedBy = "users")
+    @OneToMany
     private Set<Account> accounts;
 
     public long getId() {
