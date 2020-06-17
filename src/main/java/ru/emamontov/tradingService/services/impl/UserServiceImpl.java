@@ -1,17 +1,16 @@
-package ru.emamontov.tradingService.controllers;
+package ru.emamontov.tradingService.services.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.stereotype.Service;
 import ru.emamontov.tradingService.entities.User;
 import ru.emamontov.tradingService.repositories.UserRepository;
+import ru.emamontov.tradingService.services.UserService;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@RestController
-@RequestMapping("/users")
-public class UserController {
+@Service
+public class UserServiceImpl implements UserService {
 
     private UserRepository userRepository;
 
@@ -20,27 +19,25 @@ public class UserController {
         this.userRepository = userRepository;
     }
 
-    @GetMapping
+    @Override
     public List<User> findAllUsers(){
         List<User> list = new ArrayList<>();
         userRepository.findAll().forEach(e -> list.add(e));
         return list;
     }
 
-    @GetMapping("/{id}")
-    public User findUserById(@PathVariable Long id){
+    @Override
+    public User findById(Long id) {
         return userRepository.findById(id).get();
     }
 
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public User createUser(@RequestBody User newUser){
+    @Override
+    public void createUser(User newUser) {
         userRepository.save(newUser);
-        return newUser;
     }
 
-    @DeleteMapping("/{id}")
-    public void deleteUser(@PathVariable Long id){
+    @Override
+    public void deleteUser(Long id) {
         userRepository.deleteById(id);
     }
 }
