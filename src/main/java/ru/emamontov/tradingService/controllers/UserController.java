@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/users")
-public class UserControllerImpl {
+public class UserController {
 
     UserService userService;
 

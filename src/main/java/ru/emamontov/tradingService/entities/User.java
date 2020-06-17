@@ -1,24 +1,21 @@
 package ru.emamontov.tradingService.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Set;
 
 @Entity
-@Table(name="USERS")
-public class User {
+@Table(name="users")
+public class User implements Serializable {
     @Id
     @GeneratedValue
     private long id;
     private String name;
+    @OneToMany(mappedBy = "users")
+    private Set<Account> accounts;
 
     public long getId() {
         return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getName() {
