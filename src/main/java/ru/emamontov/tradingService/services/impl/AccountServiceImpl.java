@@ -10,6 +10,7 @@ import ru.emamontov.tradingService.services.UserService;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class AccountServiceImpl implements AccountService {
@@ -44,7 +45,12 @@ public class AccountServiceImpl implements AccountService {
         User accountOwner = account.getUser();
         long id = accountOwner.getId();
         User user = userService.findById(id);
-        return (accountOwner.equals(user)) ? accountRepository.save(account) : null;
+
+        if (accountOwner.equals(user)) {
+            user.addAccount(account);
+            return accountRepository.save(account);
+        }
+        return null;
     }
 
     @Override

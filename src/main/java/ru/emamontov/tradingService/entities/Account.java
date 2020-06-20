@@ -7,13 +7,12 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Data
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@EqualsAndHashCode(of = {"id"})
 @Entity
 @Table(name="accounts")
 public class Account implements Serializable {
     @Id
     @GeneratedValue
-    @EqualsAndHashCode.Include
     private long id;
 
     private long balance;

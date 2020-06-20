@@ -8,17 +8,20 @@ import java.io.Serializable;
 import java.util.Set;
 
 @Data
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@EqualsAndHashCode(of = {"id"})
 @Entity
 @Table(name="users")
 public class User implements Serializable {
     @Id
     @GeneratedValue
-    @EqualsAndHashCode.Include
     private long id;
 
     private String name;
 
     @OneToMany
     private Set<Account> accounts;
+
+    public void addAccount(Account account){
+        accounts.add(account);
+    }
 }
