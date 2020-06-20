@@ -21,13 +21,13 @@ public class OrderController {
 
     @GetMapping
     public List<Order> findAllOrders(){
-        return orderService.findAllUsers();
+        return orderService.findAllOrders();
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Order createOrder(@RequestBody Order newOrder){
-        orderService.createOrder(newOrder);
-        return newOrder;
+        if (orderService.createOrder(newOrder)) return newOrder;
+        return null; //todo throw exception
     }
 }

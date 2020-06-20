@@ -15,9 +15,7 @@ public class User implements Serializable {
     @Id
     @GeneratedValue
     private long id;
-
     private String name;
-
     @OneToMany
     private Set<Account> accounts;
 

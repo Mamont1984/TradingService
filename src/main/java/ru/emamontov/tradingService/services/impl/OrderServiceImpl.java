@@ -3,7 +3,6 @@ package ru.emamontov.tradingService.services.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.emamontov.tradingService.entities.order.Order;
-import ru.emamontov.tradingService.entities.User;
 import ru.emamontov.tradingService.repositories.OrderRepository;
 import ru.emamontov.tradingService.services.OrderService;
 
@@ -27,14 +26,14 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<Order> findAllUsers() {
+    public List<Order> findAllOrders() {
         List<Order> list = new ArrayList<>();
         orderRepository.findAll().forEach(e -> list.add(e));
         return list;
     }
 
     @Override
-    public void createOrder(Order newOrder) {
-        sortedSetTradingService.createOrder(newOrder);
+    public boolean createOrder(Order newOrder) {
+        return sortedSetTradingService.createOrder(newOrder);
     }
 }

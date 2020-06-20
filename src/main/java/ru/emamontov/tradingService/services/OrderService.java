@@ -5,7 +5,7 @@ import ru.emamontov.tradingService.entities.order.Order;
 import java.util.List;
 
 public interface OrderService {
-    List<Order> findAllUsers();
+    List<Order> findAllOrders();
 
-    void createOrder(Order newOrder);
+    boolean createOrder(Order newOrder);
 }

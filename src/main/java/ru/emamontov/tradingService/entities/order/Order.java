@@ -14,22 +14,16 @@ import java.io.Serializable;
 public class Order implements Serializable, Comparable<Order> {
     @Id
     @GeneratedValue
-    private long id;
-
-    private long price;
-
-    private long quantity;
-
-    private Account account;
+    final private long id;
+    final private long price;
+    final private long quantity;
+    final private Account account;
+    final public OrderDirection orderDirection;
+    final public OrderType orderType;
+    private OrderStatus orderStatus;
 
     @Override
     public int compareTo(Order o) {
         return Long.compare(price, o.price);
     }
-
-    private OrderDirection orderDirection;
-
-    private OrderType orderType;
-
-    private OrderStatus orderStatus;
 }
