@@ -43,7 +43,7 @@ public class UserController {
     }
 
     @GetMapping("/{userId}/accounts/")
-    public List<Account> getAllUserAccounts(@PathVariable Long userId){
-        return userService.getAllUserAccounts(userId);
+    public List<Account> findAllUserAccounts(@PathVariable Long userId){
+        return userService.findAllUserAccounts(userId);
     }
 }

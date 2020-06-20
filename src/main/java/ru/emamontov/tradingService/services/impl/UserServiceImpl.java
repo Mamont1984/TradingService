@@ -50,7 +50,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<Account> getAllUserAccounts(Long userId) {
+    public List<Account> findAllUserAccounts(Long userId) {
         User user = userRepository.findById(userId).get();
         return accountRepository.findByUser(user);
     }
