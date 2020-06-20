@@ -3,13 +3,14 @@ package ru.emamontov.tradingService.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import ru.emamontov.tradingService.entities.Account;
 import ru.emamontov.tradingService.entities.User;
 import ru.emamontov.tradingService.services.UserService;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("api/v1/users")
 public class UserController {
 
     UserService userService;
@@ -24,9 +25,9 @@ public class UserController {
         return userService.findAllUsers();
     }
 
-    @GetMapping("/{id}")
-    public User findUserById(@PathVariable Long id){
-        return userService.findById(id);
+    @GetMapping("/{userId}")
+    public User findUserById(@PathVariable Long userId){
+        return userService.findById(userId);
     }
 
     @PostMapping
@@ -36,8 +37,13 @@ public class UserController {
         return newUser;
     }
 
-    @DeleteMapping("/{id}")
-    public void deleteUser(@PathVariable Long id){
-        userService.deleteUser(id);
+    @DeleteMapping("/{userId}")
+    public void deleteUser(@PathVariable Long userId){
+        userService.deleteUser(userId);
+    }
+
+    @GetMapping("/{userId}/accounts/")
+    public List<Account> getAllUserAccounts(@PathVariable Long userId){
+        return userService.getAllUserAccounts(userId);
     }
 }

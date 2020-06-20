@@ -1,5 +1,6 @@
 package ru.emamontov.tradingService.services;
 
+import ru.emamontov.tradingService.entities.Account;
 import ru.emamontov.tradingService.entities.User;
 
 import java.util.List;
@@ -12,4 +13,6 @@ public interface UserService {
     void createUser(User newUser);
 
     void deleteUser(Long id);
+
+    List<Account> getAllUserAccounts(Long userId);
 }
