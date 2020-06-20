@@ -3,8 +3,10 @@ package ru.emamontov.tradingService.services.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.emamontov.tradingService.entities.Account;
+import ru.emamontov.tradingService.entities.User;
 import ru.emamontov.tradingService.repositories.AccountRepository;
 import ru.emamontov.tradingService.services.AccountService;
+import ru.emamontov.tradingService.services.UserService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +15,12 @@ import java.util.List;
 public class AccountServiceImpl implements AccountService {
 
     private AccountRepository accountRepository;
+    private UserService userService;
+
+    @Autowired
+    public void setUserService(UserService userService) {
+        this.userService = userService;
+    }
 
     @Autowired
     public void setAccountRepository(AccountRepository accountRepository) {
@@ -33,6 +41,14 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public Account createAccount(Account account) {
-        return accountRepository.save(account);
+        User accountOwner = account.getUser();
+        long id = accountOwner.getId();
+        User user = userService.findById(id);
+        return (accountOwner.equals(user)) ? accountRepository.save(account) : null;
+    }
+
+    @Override
+    public void deleteAccount(Long accountId) {
+        accountRepository.deleteById(accountId);
     }
 }

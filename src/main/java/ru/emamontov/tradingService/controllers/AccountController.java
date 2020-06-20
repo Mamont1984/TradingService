@@ -34,4 +34,10 @@ public class AccountController {
     public Account createAccount(@RequestBody Account newAccount){
         return accountService.createAccount(newAccount);
     }
+
+    @DeleteMapping("/{accountId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteAccount(@RequestBody Long accountId){
+        accountService.deleteAccount(accountId);
+    }
 }
