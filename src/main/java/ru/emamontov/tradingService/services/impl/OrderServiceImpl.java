@@ -2,7 +2,10 @@ package ru.emamontov.tradingService.services.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ru.emamontov.tradingService.entities.Account;
 import ru.emamontov.tradingService.entities.order.Order;
+import ru.emamontov.tradingService.entities.order.OrderDirection;
+import ru.emamontov.tradingService.entities.order.OrderType;
 import ru.emamontov.tradingService.repositories.OrderRepository;
 import ru.emamontov.tradingService.services.OrderService;
 

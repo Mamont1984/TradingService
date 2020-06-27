@@ -20,7 +20,7 @@ public class Order implements Serializable, Comparable<Order> {
     final private Account account;
     final public OrderDirection orderDirection;
     final public OrderType orderType;
-    private OrderStatus orderStatus;
+    private OrderStatus orderStatus = OrderStatus.NEW;
 
     @Override
     public int compareTo(Order o) {

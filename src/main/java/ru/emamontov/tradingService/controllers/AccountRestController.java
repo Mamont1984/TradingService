@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/accounts")
-public class AccountController {
+public class AccountRestController {
 
     private AccountService accountService;
 
